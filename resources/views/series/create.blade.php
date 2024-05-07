@@ -1,5 +1,5 @@
 <x-layout title="Nova série">
-    <form action="/series/store" method="POST" class="bg-primary-subtle rounded shadow m-5 p-3">
+    <form action="{{route('series.store')}}" method="POST" class="bg-primary-subtle rounded shadow m-5 p-3">
         @csrf
         <div class="form-control">
             <label for="nome" class="form-label">Nome da série:</label>

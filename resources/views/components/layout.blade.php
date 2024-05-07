@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" >
 </head>
 <body>
-    <h1 class="bg-dark p-5 text-center text-white">{{$title}}</h1>
+    <h1 class="bg-primary p-2 text-center text-white">{{$title}}</h1>
 
     {{$slot}}
 </body>
