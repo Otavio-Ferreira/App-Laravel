@@ -7,10 +7,15 @@
     <title>{{$title}}</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .active{
+            background: #E07B67 !important;
+        }
+    </style>
 </head>
 
-<body class="d-flex">
-    <div class="d-flex flex-column flex-shrink-0 bg-body-tertiary vh-100" style="width: 4.5rem;">
+<body class="d-flex" style="background: rgba(32, 32, 36, 0.9);">
+    <div class="d-flex flex-column flex-shrink-0 vh-100" style="width: 4.5rem; background: #202024;">
         <a href="/" class="d-block p-3 link-body-emphasis text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
             <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Dashboard">
                 <use xlink:href="#speedometer2"></use>
@@ -68,14 +73,23 @@
         </div>
     </div>
     <main class="w-100">
-        <nav class="navbar bg-body-secondary">
+        <nav class="navbar" style="background: #17171A;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand fw-bold" href="#" style="color: #E07B67;">
                     {{$title}}
                 </a>
             </div>
         </nav>
         <div class="container mt-3">
+            @if ($errors->any())
+                <div class="alert alert-danger text-danger bg-transparent">
+                    <ul class="m-0">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             {{$slot}}
         </div>
     </main>

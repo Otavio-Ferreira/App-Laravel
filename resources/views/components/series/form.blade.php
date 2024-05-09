@@ -1,13 +1,11 @@
-<x-layout title="{{$title}}">
-    <form action="{{ $action }}" method="POST" class="">
+<form action="{{ $action }}" method="POST" class="">
         @csrf
-        @isset($nome)
+        @if($update)
         @method('PUT')
-        @endisset
-        <div class="form-floating mb-3">
-            <input type="text" id="nome" name="nome" class="form-control" placeholder="name@example.com"  @isset($nome) value="{{$nome}}" @endisset>
-            <label for="nome">Nome da série</label>
+        @endif
+        <div class="mb-3">
+            <label for="nome" class="text-white mb-2">Nome da série</label>
+            <input type="text" id="nome" name="nome" class="form-control bg-transparent text-white" @isset($nome) value="{{$nome}}" @endisset>
         </div>
-        <button class="btn btn-success" type="submit">Salvar</button>
-    </form>
-</x-layout>
+        <button class="btn btn-outline-success" type="submit">Salvar</button>
+</form>

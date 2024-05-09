@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Serie;
+use App\Http\Requests\SeriesFormRequest;
+use App\Models\Season;
+use App\Models\Series;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,7 +12,10 @@ class SeriesController extends Controller
 {
     public function index()
     {
-        $series = Serie::query()->orderBy('nome', 'desc')->get();
+        $series = Series::all();
+
+        // $series = Serie::active(); Buscar o escopo das buscas
+
         $messagem = session('messagem');
         return view('series.index')->with('series', $series)->with('messagem', $messagem);
     }
@@ -21,26 +25,28 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-    public function store(Request $request)
-    {
-        $serie = Serie::create($request->all());
+    public function store(SeriesFormRequest $request)
+    {  
+        
+        $serie = Series::create($request->all());
         return to_route('series.index')->with('messagem', "Série '{$serie->nome}' adicionada com sucesso");
     }
 
-    public function destroy(Serie $series)
+    public function destroy(Series $series)
     {
 
         $series->delete();
         return to_route('series.index')->with('messagem', "Série '{$series->nome}' removida com sucesso");
     }
 
-    public function edit(Serie $series)
+    public function edit(Series $series)
     {
-        $data = Serie::find($series->id);
+
+        $data = Series::find($series->id);
         return view('series.edit')->with('data', $data);
     }
-
-    public function update(Serie $series, Request $request)
+ 
+    public function update(Series $series, SeriesFormRequest $request)
     {
         // $series->nome = $request->nome;
         $series->fill($request->all());
