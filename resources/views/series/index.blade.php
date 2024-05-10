@@ -1,9 +1,4 @@
-<x-layout title="Series">
-    @isset($messagem)
-    <div class="alert alert-success bg-transparent text-success mb-3">
-        {{$messagem}}
-    </div>
-    @endisset
+<x-layout title="Series" :messagem="$messagem">
     <div class="d-flex justify-content-end mb-2">
         <a href="{{route('series.create')}}" class="btn btn-sm text-white" style="background: #E07B67;">
             <i class="bi bi-folder-plus"></i>
@@ -21,7 +16,7 @@
         <tbody>
             @foreach($series as $serie)
             <tr>
-                <th class="fw-normal">{{ $serie->nome }}</th>
+                <th class="fw-normal"><a href="{{route('seasons.index', $serie->id)}}" class="text-decoration-none text-white">{{ $serie->nome }}</a></th>
                 <th>
                     <a href="{{ route('series.edit', $serie->id) }}" class="btn btn-outline-primary btn-sm w-100">
                         <i class="bi bi-pencil-square"></i>
