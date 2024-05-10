@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
+use App\Models\Episode;
 use App\Models\Season;
 use App\Models\Series;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ class SeriesController extends Controller
     public function index()
     {
         $series = Series::all();
+        dd($series);
 
         // $series = Serie::active(); Buscar o escopo das buscas
 
@@ -27,8 +29,19 @@ class SeriesController extends Controller
 
     public function store(SeriesFormRequest $request)
     {  
-        
         $serie = Series::create($request->all());
+
+        for ($i=1; $i <= $request->seasonQty; $i++) { 
+            $season = $serie->seasons()->create([
+                "number" => $i,
+            ]);
+
+            for ($e=0; $e <= $request->episodesPerSeason ; $e++) { 
+                $season->episodes()->create([
+                    "number" => $e,
+                ]);
+            }
+        }
         return to_route('series.index')->with('messagem', "Série '{$serie->nome}' adicionada com sucesso");
     }
 
