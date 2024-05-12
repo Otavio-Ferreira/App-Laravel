@@ -38,10 +38,20 @@
                     <i class="bi bi-collection-play fs-5"></i>
                 </a>
             </li>
+            @auth
             <li class="nav-item">
                 <a href="{{ route('series.create') }}" class="nav-link py-3 rounded-0 {{ request()->routeIs(['series.create']) ? 'active' : 'text-secondary'}}" aria-current="page" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Home" data-bs-original-title="Home">
                     <i class="bi bi-folder-plus fs-5"></i>
                 </a>
+            </li>
+            @endauth
+            <li class="nav-item">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit" class="m-auto nav-link py-3 rounded-0 text-secondary" aria-current="page" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Home" data-bs-original-title="Home">
+                        <i class="bi bi-box-arrow-left fs-5"></i>
+                    </button>
+                </form>
             </li>
         </ul>
     </div>

@@ -1,4 +1,4 @@
-<x-layout title="Temporadas de {!! $series->nome !!}" :messagem="$messagem">
+<x-layout title="Temporadas de {!! $series->nome !!}">
     <table class="table table-dark tbale-hover ">
         <thead>
             <tr>
@@ -10,7 +10,7 @@
             @foreach($seasons as $season)
             <tr>
                 <th class="fw-normal"><a href="{{ route('episodes.index', $season->id) }}" class="text-decoration-none text-white">Temporada {{ $season->number }}</a></th>
-                <th class="text-end"><span class="badge text-bg-primary">{{ $season->episodes->count() }}</span></th>
+                <th class="text-end"><span class="badge text-bg-primary">{{ $season->numberOfWatchedEpisodes() }} / {{ $season->episodes->count() }}</span></th>
             </tr>
             @endforeach
         </tbody>

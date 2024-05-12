@@ -19,7 +19,7 @@ class SeasonsController extends Controller
 
         return view('seasons.index')->with([
             'seasons' => $seasons,
-            'series' => $series
+            'series' => $series,
         ]);
     }
 }
