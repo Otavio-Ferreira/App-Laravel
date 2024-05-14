@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SeriesCreated;
 use App\Http\Middleware\Autenticator;
 use App\Http\Requests\SeriesFormRequest;
 use App\Models\Series;
@@ -31,7 +32,13 @@ class SeriesController extends Controller
     public function store(SeriesFormRequest $request)
     {
         $serie = $this->repository->add($request);
- 
+
+        SeriesCreated::dispatch(
+            $serie->nome,
+            $serie->id,
+            $request->seasonQty,
+            $request->episodesPerSeason
+        );
         return to_route('series.index')->with('messagem', "Série '{$serie->nome}' adicionada com sucesso");
     }
 
