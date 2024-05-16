@@ -7,7 +7,7 @@
         </a>
     </div>
     @endauth
-    <table class="table table-dark tbale-hover ">
+    <table class="table table-dark tbale-hover">
         <thead>
             <tr>
                 <th style="color: #E07B67;">Nome da série</th>
@@ -23,7 +23,7 @@
                 <th class="fw-normal">
                     @auth<a href="{{route('seasons.index', $serie->id)}}" class="text-decoration-none text-white">@endauth
                         {{ $serie->nome }}
-                    @auth</a>@endauth
+                        @auth</a>@endauth
                 </th>
                 @auth
                 <th>

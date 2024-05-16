@@ -1,4 +1,7 @@
 <x-layout title="Temporadas de {!! $series->nome !!}">
+    <div class="d-flex justify-content-center mb-3">
+        <img src="{{ asset('storage/'.$series->cover) }}" alt="">
+    </div>
     <table class="table table-dark tbale-hover ">
         <thead>
             <tr>

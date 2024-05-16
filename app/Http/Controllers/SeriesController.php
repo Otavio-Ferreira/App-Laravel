@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\SeriesCreated;
+use App\Events\SeriesDestroy;
 use App\Http\Middleware\Autenticator;
 use App\Http\Requests\SeriesFormRequest;
 use App\Models\Series;
@@ -31,6 +32,8 @@ class SeriesController extends Controller
 
     public function store(SeriesFormRequest $request)
     {
+        $cover_path = $request->file("cover")->store('series_cover', 'public');
+        $request->coverPath = $cover_path;
         $serie = $this->repository->add($request);
 
         SeriesCreated::dispatch(
@@ -44,7 +47,9 @@ class SeriesController extends Controller
 
     public function destroy(Series $series)
     {
-
+        SeriesDestroy::dispatch(
+            $series->cover
+        );
         $series->delete();
         return to_route('series.index')->with('messagem', "Série '{$series->nome}' removida com sucesso");
     }

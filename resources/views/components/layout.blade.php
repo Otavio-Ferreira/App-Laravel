@@ -92,6 +92,7 @@
         });
     </script>
     @endif
+    @yield('script')
 </body>
 
 </html>
