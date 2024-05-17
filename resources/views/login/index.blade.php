@@ -1,5 +1,5 @@
 <x-layout-auth title="Login">
-  <form action="{{ route('sigin') }}" method="POST" class="w-25 border border-white rounded p-3 m-auto">
+  <form action="{{ route('sigin') }}" method="POST" class="border border-white rounded p-3 m-auto">
     @csrf
     <div class="mb-3">
       <label for="email" class="text-white mb-2">Email</label>

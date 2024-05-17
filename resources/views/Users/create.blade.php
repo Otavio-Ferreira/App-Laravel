@@ -1,5 +1,5 @@
 <x-layout-auth title="Novo usuário">
-  <form action="{{ route('users.store') }}" method="POST" class="w-25 border border-white rounded p-3 m-auto">
+  <form action="{{ route('users.store') }}" method="POST" class="border border-white rounded p-3 m-auto">
     @csrf
     <div class="mb-3">
       <label for="name" class="text-white mb-2">Nome</label>

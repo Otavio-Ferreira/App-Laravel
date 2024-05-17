@@ -23,7 +23,7 @@
         <i class="bi bi-cloud-upload fs-1"></i> <br>
         Selecione uma imagem para a campa
       </label>
-      <input type="file" onchange="showFile()" id="cover" name="cover" value="{{old('cover')}}" accept=".png, .jpg, .jpeg" class="form-control bg-transparent text-white is-valid" hidden required>
+      <input type="file" onchange="showFile()" id="cover" name="cover" value="{{old('cover')}}" accept=".png, .jpg, .jpeg" class="form-control bg-transparent text-white is-valid" hidden>
       <div class="" id="response">
 
       </div>

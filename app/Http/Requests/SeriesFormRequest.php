@@ -23,6 +23,7 @@ class SeriesFormRequest extends FormRequest
     {
         return [
             'nome' => ['required', 'min:3'],
+            'cover' => ['required','file', 'mimes:jpg,bmp,png'],
         ];
     }
 
@@ -30,7 +31,10 @@ class SeriesFormRequest extends FormRequest
     {
         return [
             'nome.required' => 'O campo nome é obrigatório',
-            'nome.min' => 'O campo nome precisa de pelo menos :min caracteres'
+            'nome.min' => 'O campo nome precisa de pelo menos :min caracteres',
+            'cover.required' => 'O campo imagem precisa ser preenchido',
+            'cover.file' => 'O campo imagem precisa ser um arquivo',
+            'cover.mimes' => 'O campo imagem precisa ser um arquivo do tipo .jpeg, .jpg ou .png'
         ];
     } 
 }
