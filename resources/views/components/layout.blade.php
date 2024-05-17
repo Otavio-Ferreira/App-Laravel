@@ -7,6 +7,7 @@
     <title>{{$title}}</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    @yield('css')
     <style>
         .active {
             background: #E07B67 !important;
